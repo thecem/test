@@ -14,13 +14,11 @@ jobs:
           files: 'hassio-addon/config.json'
           version-regexp: '\d+.\d+.\d+'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Deploy to hassio-adon repo
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Copy
+        uses: andstor/copycat-action@v3
         with:
-          personal_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./hassio-addon
-          external_repository: thecem/hassio-addon
-          publish_branch: main
-          destination_dir: evcc
-          allow_empty_commit: false
-          commit_message: config version update
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          src_path: /hassio-addon/config.json
+          dst_path: /evcc/
+          dst_owner: thecem
+          dst_repo_name: hassio-addon
