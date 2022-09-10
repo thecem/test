@@ -15,7 +15,7 @@ jobs:
         with:
           configuration: "configuration.json"
           repo: "test"
-          outputFile: "CHANGELOG.md"
+          outputFile: "test/CHANGELOG.md"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
