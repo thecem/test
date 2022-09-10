@@ -1,6 +1,6 @@
 {
   "name": "evcc",
-  "version": "1.0.27",
+  "version": "0.100",
   "slug": "evcc",
   "description": "EV Charge Controller!",
   "url": "https://github.com/evcc-io/evcc",
