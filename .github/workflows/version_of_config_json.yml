@@ -25,4 +25,14 @@ jobs:
           user_email: 'example@email.com'
           user_name: 'dmnemec'
           commit_message: 'A custom message for the commit'
+      - name: Deploy to docs repo
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.GH_TOKEN }}
+          publish_dir: ./hassio-addon
+          external_repository: thecem/hassio-addon
+          publish_branch: main
+          destination_dir: evcc
+          allow_empty_commit: false
+          commit_message: version update of config.json
   
