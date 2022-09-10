@@ -17,7 +17,7 @@ jobs:
       - name: Copy
         uses: andstor/copycat-action@v3
         with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.GH_TOKEN }}
           src_path: hassio-addon/config.json
           dst_path: /evcc/
           dst_owner: thecem
