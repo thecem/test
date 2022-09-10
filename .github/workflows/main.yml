@@ -13,7 +13,7 @@ jobs:
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v3
         with:
-          configuration: "configuration.json"
+          configuration: ".github/workflows/configuration.json"
           repo: "test"
           outputFile: "test/CHANGELOG.md"
         env:
