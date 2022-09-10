@@ -14,13 +14,13 @@ jobs:
           files: 'hassio-addon/config.json'
           version-regexp: '\d+.\d+.\d+'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Duplicate Release With Asset to public_Repo
-        id: Release-AIO
-        uses: Hs1r1us/Release-AIO@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # You need a new token to access the target Repository
+      - name: Deploy to hassio-adon repo
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          tag_name: 'inherit' # Must use 'inherit' to get the latest release
-          body: 'hello world' # Will be added in the new release
-          repo: 'thecem/hassio-addon' # The format is like owner/repo
-          asset_files: './asset_file' # Will be added in the new release
+          personal_token: ${{ secrets.GH_TOKEN }}
+          publish_dir: ./hassio-addon
+          external_repository: thecem/hassio-addon
+          publish_branch: main
+          destination_dir: evcc
+          allow_empty_commit: false
+          commit_message: config version update
