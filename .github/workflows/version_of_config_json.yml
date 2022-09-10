@@ -14,17 +14,6 @@ jobs:
           files: 'hassio-addon/config.json'
           version-regexp: '\d+.\d+.\d+'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Pushes test file
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          source_file: 'config.json'
-          destination_repo: 'thecem/hassio-addon'
-          destination_folder: 'evcc'
-          user_email: 'example@email.com'
-          user_name: 'dmnemec'
-          commit_message: 'A custom message for the commit'
       - name: Duplicate Release With Asset to public_Repo
         id: Release-AIO
         uses: Hs1r1us/Release-AIO@main
