@@ -11,6 +11,6 @@ jobs:
       - uses: actions/checkout@v2
       - uses: pocket-apps/action-update-version@v1
         with:
-          files: 'evcc/config.json'
+          files: 'thecem/evcc/config.json'
           version-regexp: '\d+.\d+.\d+'
           branch-name: 
