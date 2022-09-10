@@ -13,7 +13,6 @@ jobs:
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v3
         with:
-          #configuration: ".github/workflows/configuration.json"
           configurationJson: |
             {
               "categories": [
