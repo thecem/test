@@ -13,7 +13,6 @@ jobs:
         with:
           files: 'hassio-addon/hassio.addon.config.json'
           version-regexp: '\d+.\d+.\d+'
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Copy
         uses: andstor/copycat-action@v3
         with:
