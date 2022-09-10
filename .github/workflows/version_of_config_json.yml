@@ -17,7 +17,7 @@ jobs:
       - name: Pushes test file
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+          API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
         with:
           source_file: 'config.json'
           destination_repo: 'thecem/hassio-addon'
@@ -25,14 +25,13 @@ jobs:
           user_email: 'example@email.com'
           user_name: 'dmnemec'
           commit_message: 'A custom message for the commit'
-      - name: Deploy to docs repo
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Duplicate Release With Asset to public_Repo
+        id: Release-AIO
+        uses: Hs1r1us/Release-AIO@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # You need a new token to access the target Repository
         with:
-          personal_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./hassio-addon
-          external_repository: thecem/hassio-addon
-          publish_branch: main
-          destination_dir: evcc
-          allow_empty_commit: false
-          commit_message: version update of config.json
-  
+          tag_name: 'inherit' # Must use 'inherit' to get the latest release
+          body: 'hello world' # Will be added in the new release
+          repo: 'thecem/hassio-addon' # The format is like owner/repo
+          asset_files: './asset_file' # Will be added in the new release
