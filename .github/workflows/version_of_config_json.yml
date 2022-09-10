@@ -21,4 +21,6 @@ jobs:
           src_path: hassio-addon/config.json
           dst_path: /evcc/
           dst_owner: thecem
+          src_branch: main
+          dst_branch: main
           dst_repo_name: hassio-addon
