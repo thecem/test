@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: pocket-apps/action-update-version@v1
         with:
-          files: 'thecem/hassio-addon/evcc/config.json'
+          files: 'config.json'
           version-regexp: '\d+.\d+.\d+'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Pushes test file
