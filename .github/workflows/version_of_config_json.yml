@@ -13,4 +13,4 @@ jobs:
         with:
           files: 'thecem/evcc/config.json'
           version-regexp: '\d+.\d+.\d+'
-          branch-name: 
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
