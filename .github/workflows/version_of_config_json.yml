@@ -9,16 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: pocket-apps/action-update-version@v1
-        with:
-          files: 'hassio-addon/hassio.addon.config.json'
-          version-regexp: '\d+.\d+.\d+'
-          branch-name: main
-          author-name: thecem
+      #- uses: pocket-apps/action-update-version@v1
+      #  with:
+      #    files: 'hassio-addon/hassio.addon.config.json'
+      #    version-regexp: '\d+.\d+.\d+'
+      #    branch-name: main
+      #    author-name: thecem
+      
+      - name: Update version
+        # uses: pocket-apps/action-update-version@v1
+        # with:
+        #   files: "packaging/hassio/config.json"
+        #   version-regexp: '\d+.\d+.\d+'
+        #   branch-name: master
+        #   author-name: evcc-io
+        run: |
+          export RELEASE_VERSION=$(echo ${{ env.GITHUB_REF }} | sed -e s#refs/tags/##)
+          sed -e s#0.0.0#$RELEASE_VERSION# packaging/hassio/config.json
       - uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.GH_TOKEN }}
-          src_path: hassio-addon/hassio.addon.config.json
+          src_path: packaging/hassio/config.json
           dst_path: /evcc/config.json
           dst_owner: thecem
           src_branch: main
