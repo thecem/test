@@ -1,5 +1,8 @@
-on: push
-
+name: Upgrade Version
+on: #push
+  push:
+    tags:
+      - '*'
 jobs:
     replicate-file:
         runs-on: ubuntu-latest
