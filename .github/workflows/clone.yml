@@ -44,7 +44,7 @@ jobs:
             echo "$SRC"
             export DST='"version": "'$RELEASE_VERSION'"'
             echo "$DST"
-            sed #"$SRC"#"$DST"# ./projectA/packaging/hassio/config.json > ./projectB/evcc/config.json
+            sed ##"$SRC"#"$DST"# ./projectA/packaging/hassio/config.json > ./projectB/evcc/config.json
             
         - name: Push Project B
           run: |
