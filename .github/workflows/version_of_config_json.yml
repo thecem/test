@@ -14,6 +14,7 @@ jobs:
           files: 'hassio-addon/hassio.addon.config.json'
           version-regexp: '\d+.\d+.\d+'
           branch-name: main
+          author-name: thecem
       - name: Copy
         uses: andstor/copycat-action@v3
         with:
