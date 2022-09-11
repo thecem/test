@@ -15,8 +15,7 @@ jobs:
           version-regexp: '\d+.\d+.\d+'
           branch-name: main
           author-name: thecem
-      - name: Copy
-        uses: andstor/copycat-action@v3
+      - uses: andstor/copycat-action@v3
         with:
           personal_token: ${{ secrets.GH_TOKEN }}
           src_path: hassio-addon/hassio.addon.config.json
