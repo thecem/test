@@ -1,8 +1,8 @@
 name: Upgrade Version
-on: #push
-  push:
-    tags:
-      - '*'
+on: push
+  #push:
+  #  tags:
+  #    - '*'
 jobs:
     replicate-file:
         runs-on: ubuntu-latest
@@ -32,11 +32,16 @@ jobs:
           #    touch ./projectB/file
           #  fi
           #             ./projectB/file sed -e s#0.0.0#$RELEASE_VERSION# 
+          #run: |
+          #  export RELEASE_VERSION=$(echo ${{ github.ref }} | sed -e s#refs/tags/v##)
+          #  echo "$RELEASE_VERSION"
+          #  sed -e s#0.0.0#$RELEASE_VERSION# ./projectA/packaging/hassio/config.json > ./projectB/evcc/config.json
+            
           run: |
             export RELEASE_VERSION=$(echo ${{ github.ref }} | sed -e s#refs/tags/v##)
             echo "$RELEASE_VERSION"
-            sed -e s#0.0.0#$RELEASE_VERSION# ./projectA/packaging/hassio/config.json > ./projectB/evcc/config.json
-
+            sed -e s#version.*#"version": "$RELEASE_VERSION"# ./projectB/evcc/config.json
+            
         - name: Push Project B
           run: |
             cd ./projectB
