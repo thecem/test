@@ -24,10 +24,13 @@ jobs:
         #   branch-name: master
         #   author-name: evcc-io
         run: |
-          echo "${{ github.ref }}" | sed -e s#refs/tags/##
-          echo "${{ github.ref }}" | sed -e s#refs/tags/v##
-          sed -i -e s#0.0.0#$(echo "${{ github.ref }}" | sed -e s#refs/tags/v##)# packaging/hassio/config.json
+          export RELEASE_VERSION=$(echo ${{ gihub.ref }} | sed -e s#refs/tags/v##)
+          echo "$RELEASE_VERSION"
+          sed -e s#0.0.0#$RELEASE_VERSION# packaging/hassio/config.json
         #run: |
+        # echo "${{ github.ref }}" | sed -e s#refs/tags/##
+        # echo "${{ github.ref }}" | sed -e s#refs/tags/v##
+        # sed -i -e s#0.0.0#$(echo "${{ github.ref }}" | sed -e s#refs/tags/v##)# packaging/hassio/config.json
         #  sed -i -e s#0.0.0#$(echo ${{ env.GITHUB_REF }} | sed -e s#refs/tags/##)# packaging/hassio/config.json
       - uses: andstor/copycat-action@v3
         with:
@@ -35,4 +38,6 @@ jobs:
           src_path: packaging/hassio/config.json
           dst_path: /evcc/config.json
           dst_owner: thecem
+          src_branch: main
+          dst_branch: main
           dst_repo_name: hassio-addon
