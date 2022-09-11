@@ -6,10 +6,10 @@ jobs:
         name: Replicate File
 
         steps:
-        #- name: Checkout Project A
-        #  uses: actions/checkout@v2
-        #  with:
-        #    path: ./projectA
+        - name: Checkout Project A
+          uses: actions/checkout@v2
+          with:
+            path: ./projectA
 
         - name: Checkout Project B
           uses: actions/checkout@master
@@ -32,7 +32,7 @@ jobs:
           run: |
             export RELEASE_VERSION=$(echo ${{ github.ref }} | sed -e s#refs/tags/v##)
             echo "$RELEASE_VERSION"
-            sed -e s#0.0.0#$RELEASE_VERSION# test/packaging/hassio/config.json > ./projectB/evcc/config.json
+            sed -e s#0.0.0#$RELEASE_VERSION# ./projectA/packaging/hassio/config.json > ./projectB/evcc/config.json
 
         - name: Push Project B
           run: |
