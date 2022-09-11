@@ -24,7 +24,7 @@ jobs:
         #   branch-name: master
         #   author-name: evcc-io
         run: |
-          sed -i -e s#0.0.0#$(echo ${{ env.GITHUB_REF }} | sed -e s#refs/tags/##)# packaging/hassio/config.json
+          sed -i -e s#0.0.0#$(echo ${{ github.ref }} | sed -e s#refs/tags/##)# packaging/hassio/config.json
           echo "${{ github.ref }}"
           ${{ github.ref }}
         #run: |
