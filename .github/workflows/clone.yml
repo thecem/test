@@ -31,7 +31,7 @@ jobs:
           #    echo "Creating $FILE"
           #    touch ./projectB/file
           #  fi
-          #             ./projectB/file sed -e s#0.0.0#$RELEASE_VERSION# 
+          #             ./projectB/file sed -e s#0.0.0#$RELEASE_VERSION#  
           #run: |
           #  export RELEASE_VERSION=$(echo ${{ github.ref }} | sed -e s#refs/tags/v##)
           #  echo "$RELEASE_VERSION"
