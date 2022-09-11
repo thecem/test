@@ -32,7 +32,7 @@ jobs:
           run: |
             export RELEASE_VERSION=$(echo ${{ github.ref }} | sed -e s#refs/tags/v##)
             echo "$RELEASE_VERSION"
-            echo "$(git rev-list --tags --max-count=1)"
+            sed -e s#0.0.0#$RELEASE_VERSION# ./projectA/file > ./projectB/file
 
         - name: Push Project B
           run: |
