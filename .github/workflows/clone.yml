@@ -33,7 +33,7 @@ jobs:
           #  fi
           #             ./projectB/file sed -e s#0.0.0#$RELEASE_VERSION#  
           #run: |
-          #  export RELEASE_VERSION=$(echo ${{ github.ref }} | sed -e s#refs/tags/v##)
+          #  export RELEASE_VERSION=$(echo ${{ github.ref }} | sed -e s#refs/tags/v##) 
           #  echo "$RELEASE_VERSION"
           #  sed -e s#0.0.0#$RELEASE_VERSION# ./projectA/packaging/hassio/config.json > ./projectB/evcc/config.json
             
