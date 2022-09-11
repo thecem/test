@@ -40,7 +40,7 @@ jobs:
           run: |
             export RELEASE_VERSION=$(echo ${{ github.ref }} | sed -e s#refs/tags/v##)
             echo "$RELEASE_VERSION"
-            export SRC='"version"'
+            export SRC="version"
             echo "$SRC"
             export DST='"version": "'$RELEASE_VERSION'"'
             echo "$DST"
