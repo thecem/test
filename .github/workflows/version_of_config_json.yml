@@ -25,7 +25,7 @@ jobs:
         #   author-name: evcc-io
         run: |
           sed -i -e s#0.0.0#$(echo ${{ env.GITHUB_REF }} | sed -e s#refs/tags/##)# packaging/hassio/config.json
-          echo ${{ env.GITHUB_REF }}
+          echo "${{ env.GITHUB_REF }}"
         #run: |
         #  sed -i -e s#0.0.0#$(echo ${{ env.GITHUB_REF }} | sed -e s#refs/tags/##)# packaging/hassio/config.json
       - uses: andstor/copycat-action@v3
