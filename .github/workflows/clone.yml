@@ -42,7 +42,7 @@ jobs:
             echo "$RELEASE_VERSION"
             export SRC="version"
             echo "$SRC"
-            export DST=''"version": "'&$RELEASE_VERSION'"''
+            export DST=''"version": "'$RELEASE_VERSION'"''
             echo "$DST"
             sed -e #$SRC#$DST# ./projectB/evcc/config.json
             
