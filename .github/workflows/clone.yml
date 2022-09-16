@@ -45,7 +45,7 @@ jobs:
             export RELEASE_VERSION=$(echo ${{ github.ref }} | sed -e s#refs/tags/v##)
             echo "$RELEASE_VERSION"
             echo $(date +'%Y-%m-%dT%H:%M:%S')
-            sed -i -e s#.*version.*#'  "version": "'$RELEASE_VERSION'-'$(date +'%Y%m%d%H%M%S')'",'# ./projectB/evcc/config.json
+            sed -i -e s#.*version.*#'  "version": "'$(echo ${{ github.ref }} | sed -e s#refs/tags/v##)'-'$(date +'%Y%m%d%H%M%S')'",'# ./projectB/evcc/config.json
             
             
         - name: Push Project B
