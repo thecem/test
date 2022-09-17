@@ -47,8 +47,8 @@ jobs:
        # sed -i -e s#\"version.*#'"version": "nightly-'$(date +'%Y%m%d%H%M%S')'",'# ./projectB/evcc-nightly/config.json
         #sed -i -e s#\"version.*#'"version": "'$(echo ${{ github.ref }} | sed -e s#refs/tags/##)'",'# ./projectB/evcc/config.json
       run: |
-        sed -i -e s#"version.*#'"version": "nightly-'$(date +'%Y%m%d%H%M%S')'",'# ./projectB/evcc-nightly/config.json
-        sed -i -e s#"version.*#'"version": "'$(echo ${{ github.ref }} | sed -e s#refs/tags/##)'",'# ./projectB/evcc/config.json
+        sed -i -e s#'"'version.*#'"version": "nightly-'$(date +'%Y%m%d%H%M%S')'",'# ./projectB/evcc-nightly/config.json
+        sed -i -e s#'"'version.*#'"version": "'$(echo ${{ github.ref }} | sed -e s#refs/tags/##)'",'# ./projectB/evcc/config.json
     - name: Push Project B
       run: |
         cd ./projectB
