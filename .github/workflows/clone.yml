@@ -6,8 +6,8 @@ on: push
 env:
   BUILD_DATE: ${{ github.event.repository.updated_at }}
  # BUILD_DATE2: ${{ (date +'%Y%m%d%H%M%S') }}
-run: |
-  export BUILD_DATE3=$(date +%Y%m%d%H%M)
+  run: |
+    export BUILD_DATE3=$(date +%Y%m%d%H%M)
   
 jobs:
   replicate-file:  
