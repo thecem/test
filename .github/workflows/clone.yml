@@ -4,9 +4,8 @@ on: push
   #  tags:
   #    - '*'
 env:
-  BUILD_DATE: ${{ github.event.repository.updated_at}}
-  run: |
-    export BUILD_DATE2=$(echo $(date +'%Y%m%d%H%M%S'))
+  BUILD_DATE: ${{ github.event.repository.updated_at }}
+  BUILD_DATE2: ${{ (date +'%Y%m%d%H%M%S') }}
     
 jobs:
   replicate-file:  
