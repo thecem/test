@@ -10,13 +10,6 @@ env:
     echo "DATE2=$(date +'%Y%m%d')" >> ${GITHUB_ENV}
   
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set current date as env variable
-        run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
-      - name: Echo current date
-        run: echo $NOW
   replicate-file:  
     runs-on: ubuntu-latest
     name: Replicate File 
@@ -61,7 +54,7 @@ jobs:
         #sed -i -e s#\"version.*#'"version": "'$(echo ${{ github.ref }} | sed -e s#refs/tags/##)'",'# ./projectB/evcc/config.json
       #sed -i -e s#\"version.*#\"version\":\ \"nightly-$(date +'%Y%m%d%H%M%S')\",# ./projectB/evcc-nightly/config.json
       run: |
-        sed -i -e s#\"version.*#\"version\":\ \"nightly-$DATE\",# ./projectB/evcc-nightly/config.json
+        sed -i -e s#\"version.*#\"version\":\ \"nightly-$(date +'%Y-%m-%d')\",# ./projectB/evcc-nightly/config.json
         sed -i -e s#\"version.*#\"version\":\ \"$(echo ${{ github.ref }} | sed -e s#refs/tags/##)\",# ./projectB/evcc/config.json
         echo $(date +'%Y%m%d')
         echo $(date +'%Y-%m-%d')
