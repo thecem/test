@@ -7,7 +7,7 @@ env:
   BUILD_DATE: ${{ github.event.repository.updated_at }}
  # BUILD_DATE2: ${{ (date +'%Y%m%d%H%M%S') }}
   run: |
-    echo "DATE=$(date +'%Y%m%d%H%M%S')" >> ${GITHUB_ENV}
+    echo "DATE2=$(date +'%Y%m%d')" >> ${GITHUB_ENV}
   
 jobs:
   replicate-file:  
@@ -58,7 +58,7 @@ jobs:
         sed -i -e s#\"version.*#\"version\":\ \"$(echo ${{ github.ref }} | sed -e s#refs/tags/##)\",# ./projectB/evcc/config.json
         echo $BUILD_DATE
         echo $BUILD_DATE2
-        echo ${{ env.DATE}}
+        echo ${{ env.DATE2 }}
     - name: Push Project B
       run: |
         cd ./projectB
