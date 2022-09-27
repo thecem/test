@@ -63,9 +63,9 @@ jobs:
       run: |
         sed -i -e s#\"version.*#\"version\":\ \"nightly-$DATE\",# ./projectB/evcc-nightly/config.json
         sed -i -e s#\"version.*#\"version\":\ \"$(echo ${{ github.ref }} | sed -e s#refs/tags/##)\",# ./projectB/evcc/config.json
-        echo $BUILD_DATE
-        echo $BUILD_DATE2
-        echo ${{ env.DATE2 }}
+        echo $(date +'%Y%m%d')
+        echo $(date +'%Y-%m-%d')
+        echo nightly-$(date +'%Y-%m-%d')
         echo $NOW
         echo ${{ env.NOW }}
     - name: Push Project B
