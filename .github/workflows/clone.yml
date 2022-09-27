@@ -3,6 +3,8 @@ on: push
   #push:
   #  tags:
   #    - '*'
+env:
+  BUILD_DATE: $(date +'%Y%m%d%H%M%S')
 jobs:
   replicate-file:  
     runs-on: ubuntu-latest
@@ -49,6 +51,7 @@ jobs:
       run: |
         sed -i -e s#\"version.*#\"version\":\ \"nightly-$(date +'%Y%m%d%H%M%S')\",# ./projectB/evcc-nightly/config.json
         sed -i -e s#\"version.*#\"version\":\ \"$(echo ${{ github.ref }} | sed -e s#refs/tags/##)\",# ./projectB/evcc/config.json
+        echo $BUILD_DATE
     - name: Push Project B
       run: |
         cd ./projectB
