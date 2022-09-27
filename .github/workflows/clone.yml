@@ -58,7 +58,7 @@ jobs:
         sed -i -e s#\"version.*#\"version\":\ \"$(echo ${{ github.ref }} | sed -e s#refs/tags/##)\",# ./projectB/evcc/config.json
         echo $BUILD_DATE
         echo $BUILD_DATE2
-        echo $DATE
+        echo ${{ env.DATE}}
     - name: Push Project B
       run: |
         cd ./projectB
