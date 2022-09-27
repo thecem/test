@@ -7,7 +7,7 @@ env:
   BUILD_DATE: ${{ github.event.repository.updated_at }}
  # BUILD_DATE2: ${{ (date +'%Y%m%d%H%M%S') }}
   run: |
-    echo "DATE=$(date --rfc-3339=date)" >> ${GITHUB_ENV}
+    echo "DATE=$(date +'%Y%m%d%H%M%S')" >> ${GITHUB_ENV}
   
 jobs:
   replicate-file:  
