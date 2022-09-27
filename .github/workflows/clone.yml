@@ -10,6 +10,13 @@ env:
     echo "DATE2=$(date +'%Y%m%d')" >> ${GITHUB_ENV}
   
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set current date as env variable
+        run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+      - name: Echo current date
+        run: echo $NOW
   replicate-file:  
     runs-on: ubuntu-latest
     name: Replicate File 
@@ -59,6 +66,8 @@ jobs:
         echo $BUILD_DATE
         echo $BUILD_DATE2
         echo ${{ env.DATE2 }}
+        echo $NOW
+        echo ${{ env.NOW }}
     - name: Push Project B
       run: |
         cd ./projectB
