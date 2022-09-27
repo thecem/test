@@ -5,7 +5,9 @@ on: push
   #    - '*'
 env:
   BUILD_DATE: ${{ github.event.repository.updated_at}}
-  
+  run: |
+    export BUILD_DATE2=$(date +'%Y%m%d%H%M%S')
+    
 jobs:
   replicate-file:  
     runs-on: ubuntu-latest
